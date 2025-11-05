@@ -1,4 +1,4 @@
-package com.thien.cineman827.control;
+package com.thien.cineman827.servlet;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

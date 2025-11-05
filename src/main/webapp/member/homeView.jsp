@@ -20,7 +20,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #7daed3 0%, #5cace8 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -184,7 +184,7 @@
 <div class="container">
     <h1 class="title">Trang chủ</h1>
     <div class="btn-container">
-        <a href="" class="btn btn-login">
+        <a href="/login" class="btn btn-login">
             Đăng nhập
         </a>
         <a href="/member/registerView.jsp" class="btn btn-register">

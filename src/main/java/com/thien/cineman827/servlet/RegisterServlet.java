@@ -1,4 +1,4 @@
-package com.thien.cineman827.control;
+package com.thien.cineman827.servlet;
 
 import com.thien.cineman827.dao.CustomerDAO;
 import com.thien.cineman827.model.Customer;
