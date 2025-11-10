@@ -21,12 +21,84 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #ffffff;
             min-height: 100vh;
+            padding: 0;
+        }
+
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .system-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .system-title i {
+            color: #ffffff;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: #ffffff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .welcome-text {
+            font-size: 1rem;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .username {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .user-icon {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            color: white;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 80px);
+            padding: 40px 20px;
+            background: #ffffff;
         }
 
         .statistics-container {
@@ -178,14 +250,14 @@
         }
 
         .btn-back {
-            background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+            background: #ff6b6b;
             color: white;
-            box-shadow: 0 8px 25px rgba(149, 165, 166, 0.3);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
         }
 
         .btn-back:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(149, 165, 166, 0.4);
+            box-shadow: 0 12px 35px rgba(255, 107, 107, 0.4);
         }
 
         .btn-view {
@@ -203,20 +275,17 @@
             transform: translateY(-1px);
         }
 
-        .header-info {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 12px 18px;
-            border-radius: 15px;
-            font-size: 0.9rem;
-            color: #555;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            font-weight: 500;
-        }
-
         @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .system-title {
+                font-size: 1.5rem;
+            }
+
             .statistics-container {
                 padding: 40px 30px;
                 margin: 10px;
@@ -249,13 +318,21 @@
             .btn {
                 justify-content: center;
             }
+        }
 
-            .header-info {
-                position: relative;
-                top: auto;
-                right: auto;
-                margin-bottom: 30px;
-                display: inline-block;
+        @media (max-width: 480px) {
+            .header {
+                padding: 15px 20px;
+            }
+
+            .user-info {
+                flex-direction: column;
+                gap: 8px;
+                padding: 8px 15px;
+            }
+
+            .system-title {
+                font-size: 1.3rem;
             }
         }
 
@@ -268,41 +345,56 @@
     </style>
 </head>
 <body>
-<%--<div class="header-info">--%>
-<%--    <i class="fas fa-user"></i> TINABJan254 | <i class="fas fa-calendar"></i> 16/10/2025--%>
-<%--</div>--%>
-
-<div class="statistics-container">
-    <h1 class="title">Chọn thống kê</h1>
-
-    <div class="form-group">
-        <label for="statisticsType" class="form-label">Chọn loại thống kê</label>
-        <div class="select-wrapper">
-            <select id="statisticsType" name="statisticsType" class="select-dropdown">
-                <option value="">-- Chọn loại thống kê --</option>
-                <option value="movie">Thống kê phim</option>
-                <option value="customer">Thống kê khách hàng</option>
-                <option value="revenue">Thống kê doanh thu</option>
-            </select>
+<!-- Header -->
+<header class="header">
+    <div class="header-content">
+        <div class="system-title">
+            <i class="fas fa-film"></i>
+            Hệ thống quản lý rạp chiếu phim
+        </div>
+        <div class="user-info">
+            <div class="user-icon">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="welcome-text">
+                Welcome <span class="username">${sessionScope.user.fullName}</span>
+            </div>
         </div>
     </div>
+</header>
 
-    <div class="button-group">
-        <a href="managerHomeView.jsp" class="btn btn-back" onclick="handleBackClick(event)">
-            <i class="fas fa-arrow-left"></i>
-            Quay lại
-        </a>
+<!-- Main Content -->
+<div class="main-content">
+    <div class="statistics-container">
+        <h1 class="title">Chọn thống kê</h1>
 
-        <button type="button" class="btn btn-view" onclick="handleViewClick()">
-            <i class="fas fa-chart-line"></i>
-            Xem
-        </button>
+        <div class="form-group">
+            <label for="statisticsType" class="form-label">Chọn loại thống kê</label>
+            <div class="select-wrapper">
+                <select id="statisticsType" name="statisticsType" class="select-dropdown">
+                    <option value="">-- Chọn loại thống kê --</option>
+                    <option value="movie">Thống kê phim</option>
+                    <option value="customer">Thống kê khách hàng</option>
+                    <option value="revenue">Thống kê doanh thu</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <a href="managerHomeView.jsp" class="btn btn-back" onclick="handleBackClick(event)">
+                <i class="fas fa-arrow-left"></i>
+                Quay lại
+            </a>
+
+            <button type="button" class="btn btn-view" onclick="handleViewClick()">
+                <i class="fas fa-chart-line"></i>
+                Xem
+            </button>
+        </div>
     </div>
-
 </div>
 
 <script>
-
     const statisticsUrls = {
         'movie': 'movieStatisticView.jsp',
         'customer': 'customerStat',
@@ -326,7 +418,7 @@
         const selectValue = document.getElementById('statisticsType').value;
 
         if (!selectValue) {
-            showNotification('Vui lòng chọn loại thống kê!', 'error');
+            alert('Vui lòng chọn loại thống kê!');
             return;
         }
 
@@ -345,11 +437,11 @@
 
         notification.style.cssText = `
                 position: fixed;
-                top: 20px;
+                top: 100px;
                 left: 50%;
                 transform: translateX(-50%);
                 background: ${bgColor};
-                color: white;
+                color: black;
                 padding: 15px 25px;
                 border-radius: 10px;
                 box-shadow: 0 10px 25px rgba(0,0,0,0.2);

@@ -1,5 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -200,7 +199,7 @@
     <div class="right-section">
         <div class="register-container">
             <h2>Đăng ký thành viên</h2>
-            <form action="<c:url value='/register' />" method="post">
+            <form action="/register" method="post">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="fullName">Họ tên</label>

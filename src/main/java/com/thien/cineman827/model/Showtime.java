@@ -48,6 +48,10 @@ public class Showtime {
         return this.id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public Date getStartTime() {
         return this.startTime;
     }

@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -21,12 +22,83 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #ffffff;
             min-height: 100vh;
+            padding: 0;
+        }
+
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .system-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .system-title i {
+            color: #ffffff;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: #ffffff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .welcome-text {
+            font-size: 1rem;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .username {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .user-icon {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            color: white;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 80px);
+            padding: 40px 20px;
         }
 
         .dashboard-container {
@@ -75,7 +147,7 @@
         }
 
         .stats-button {
-            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            background: #ff6b6b;
             color: white;
             border: none;
             padding: 18px 40px;
@@ -88,7 +160,6 @@
             align-items: center;
             gap: 12px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
             position: relative;
             overflow: hidden;
         }
@@ -122,60 +193,24 @@
             font-size: 1.2rem;
         }
 
-        .header-info {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 10px 15px;
-            border-radius: 10px;
-            font-size: 0.9rem;
-            color: #555;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .welcome-text {
+        .welcome-message {
             font-size: 1.1rem;
             color: #666;
             margin-bottom: 30px;
             font-style: italic;
         }
 
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.7);
-            padding: 25px 15px;
-            border-radius: 15px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            background: rgba(255, 255, 255, 0.9);
-        }
-
-        .feature-card i {
-            font-size: 2rem;
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-
-        .feature-card h4 {
-            color: #2c3e50;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
         @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .system-title {
+                font-size: 1.5rem;
+            }
+
             .dashboard-container {
                 padding: 40px 30px;
                 margin: 10px;
@@ -189,46 +224,55 @@
                 padding: 15px 30px;
                 font-size: 1rem;
             }
+        }
 
-            .header-info {
-                position: relative;
-                top: auto;
-                right: auto;
-                margin-bottom: 20px;
+        @media (max-width: 480px) {
+            .header {
+                padding: 15px 20px;
+            }
+
+            .user-info {
+                flex-direction: column;
+                gap: 8px;
+                padding: 8px 15px;
+            }
+
+            .system-title {
+                font-size: 1.3rem;
             }
         }
     </style>
 </head>
 <body>
-<%--<div class="header-info">--%>
-<%--    <i class="fas fa-user"></i> TINABJan254 | <i class="fas fa-calendar"></i> 16/10/2025--%>
-<%--</div>--%>
+<!-- Header -->
+<header class="header">
+    <div class="header-content">
+        <div class="system-title">
+            <i class="fas fa-film"></i>
+            Hệ thống quản lý rạp chiếu phim
+        </div>
+        <div class="user-info">
+            <div class="user-icon">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="welcome-text">
+                Welcome <span class="username">${sessionScope.user.fullName}</span>
+            </div>
+        </div>
+    </div>
+</header>
 
-<div class="dashboard-container">
-    <h1 class="title">Trang chủ quản lý</h1>
+<!-- Main Content -->
+<div class="main-content">
+    <div class="dashboard-container">
+        <h1 class="title">Trang chủ quản lý</h1>
 
-    <p class="welcome-text">Chào mừng bạn đến với hệ thống quản lý</p>
+        <p class="welcome-message">Chào mừng bạn đến với hệ thống quản lý</p>
 
-    <a href="selectStatisticView.jsp" class="stats-button" onclick="handleStatsClick(event)">
-        <i class="fas fa-chart-bar"></i>
-        Xem thống kê
-    </a>
-
-<%--    <div class="feature-grid">--%>
-<%--        <div class="feature-card" onclick="handleFeatureClick('users')">--%>
-<%--            <i class="fas fa-users"></i>--%>
-<%--            <h4>Người dùng</h4>--%>
-<%--        </div>--%>
-
-<%--        <div class="feature-card" onclick="handleFeatureClick('reports')">--%>
-<%--            <i class="fas fa-file-alt"></i>--%>
-<%--            <h4>Báo cáo</h4>--%>
-<%--        </div>--%>
-
-<%--        <div class="feature-card" onclick="handleFeatureClick('settings')">--%>
-<%--            <i class="fas fa-cog"></i>--%>
-<%--            <h4>Cài đặt</h4>--%>
-<%--        </div>--%>
+        <a href="selectStatisticView.jsp" class="stats-button" onclick="handleStatsClick(event)">
+            <i class="fas fa-chart-bar"></i>
+            Xem thống kê
+        </a>
     </div>
 </div>
 

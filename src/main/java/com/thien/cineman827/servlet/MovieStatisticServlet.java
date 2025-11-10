@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -14,7 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-@WebServlet("/employee/movieStat")
+@WebServlet("/manager/movieStat")
 public class MovieStatisticServlet extends HttpServlet {
 
     @Override
@@ -40,6 +41,8 @@ public class MovieStatisticServlet extends HttpServlet {
         req.setAttribute("movieStats", res);
         req.setAttribute("startDate", startDateStr);
         req.setAttribute("endDate", endDateStr);
+        HttpSession session = req.getSession(false);
+        session.setAttribute("movieStats", res);
 
         int totalTickets = 0;
         float totalRevenue = 0;
@@ -52,7 +55,7 @@ public class MovieStatisticServlet extends HttpServlet {
         req.setAttribute("totalTickets", totalTickets);
         req.setAttribute("totalRevenue", totalRevenue);
 
-        req.getRequestDispatcher("/employee/movieStatisticView.jsp").forward(req, resp);
+        req.getRequestDispatcher("/manager/movieStatisticView.jsp").forward(req, resp);
 
     }
 }

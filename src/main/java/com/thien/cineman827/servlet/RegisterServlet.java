@@ -24,7 +24,7 @@ public class RegisterServlet extends HttpServlet {
         String phone = request.getParameter("phone");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String role  = request.getParameter("role");
+        String role  = "CUSTOMER";
 
         System.out.println(fullName + " " + dob + " " + gender + " " + address + " " + email + " " + phone);
 
@@ -37,7 +37,7 @@ public class RegisterServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        response.sendRedirect("/member/homeView.jsp");
+        response.sendRedirect(request.getContextPath() + "/member/homeView.jsp");
 
     }
 }

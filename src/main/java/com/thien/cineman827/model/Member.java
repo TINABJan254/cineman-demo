@@ -28,6 +28,25 @@ public class Member {
         this.note = "";
     }
 
+    public Member(int id, String fullName, Date dob, String gender, String address, String email, String phone, String username, String password, String role, String note) {
+        this.id = id;
+        this.fullName = fullName;
+        this.dob = dob;
+        this.gender = gender;
+        this.address = address;
+        this.email = email;
+        this.phone = phone;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.note = note;
+    }
+
+    public Member(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
     public Member() {
     }
 
@@ -35,7 +54,9 @@ public class Member {
         return id;
     }
 
-    public void setId(int id) {}
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getFullName() {
         return fullName;

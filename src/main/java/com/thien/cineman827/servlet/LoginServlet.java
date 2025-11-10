@@ -1,5 +1,6 @@
 package com.thien.cineman827.servlet;
 
+import com.thien.cineman827.dao.MemberDAO;
 import com.thien.cineman827.model.Member;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -23,14 +24,16 @@ public class LoginServlet extends HttpServlet {
         String username =  request.getParameter("username");
         String password = request.getParameter("password");
 
-        Member member = new Member();
-        member.setRole("MANAGER");
+        MemberDAO memberDAO = new MemberDAO();
+        Member member = memberDAO.checkLogin(new Member(username, password));
         if (member != null) {
             HttpSession session = request.getSession(true);
             session.setAttribute("user", member);
 
             if (member.getRole().equals("MANAGER")) {
-                response.sendRedirect(request.getContextPath() + "/employee/managerHomeView.jsp");
+                response.sendRedirect(request.getContextPath() + "/manager/managerHomeView.jsp");
+            } else if (member.getRole().equals("CUSTOMER")) {
+                response.sendRedirect(request.getContextPath() + "/member/homeView.jsp");
             }
         } else {
             response.sendRedirect(request.getContextPath() + "/login?error=true");
