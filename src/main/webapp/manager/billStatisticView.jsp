@@ -339,19 +339,16 @@
                         </c:forEach>
 
                         <tr class="total-row">
-<%--                            <td colspan="3"><strong>Tổng</strong></td>--%>
-<%--                            <td><strong><fmt:formatNumber value="${totalTickets}" type="number" groupingUsed="true"/></strong></td>--%>
-<%--                            <td class="revenue"><strong><fmt:formatNumber value="${revenueMovie}" type="number" groupingUsed="true"/> VND</strong></td>--%>
-
                             <td colspan="3"><strong>Tổng</strong></td>
-                            <td><strong>3</strong></td>
-                            <td class="revenue"><strong>3 VND</strong></td>
+                            <td><strong><fmt:formatNumber value="${totalTickets}" type="number" groupingUsed="true"/></strong></td>
+                            <td class="revenue"><strong><fmt:formatNumber value="${revenueShowtime}" type="number" groupingUsed="true"/> VND</strong></td>
+
                         </tr>
                     </c:when>
 
                     <c:otherwise>
                         <tr>
-                            <td colspan="5">Không có dữ liệu suất chiếu trong khoảng thời gian này.</td>
+                            <td colspan="5">Không có dữ liệu hóa đơn.</td>
                         </tr>
                     </c:otherwise>
                 </c:choose>

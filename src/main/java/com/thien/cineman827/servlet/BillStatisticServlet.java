@@ -37,12 +37,17 @@ public class BillStatisticServlet extends HttpServlet {
         BillDAO billDAO = new BillDAO();
         ArrayList<Bill> billStats = billDAO.getBillByShowtime(showtime);
 
+        int totalTickets = 0;
+        float revenueShowtime = 0;
         for (Bill bill : billStats) {
-            System.out.println(bill.getId() + " " + bill.getCustomer().getFullName() + " " + bill.getTotalPrice() + " " + bill.getTotalTickets());
+            totalTickets += bill.getTotalTickets();
+            revenueShowtime += bill.getTotalPrice();
         }
 
         req.setAttribute("showtime", showtime);
         req.setAttribute("billStats", billStats);
+        req.setAttribute("totalTickets", totalTickets);
+        req.setAttribute("revenueShowtime", revenueShowtime);
 
         req.getRequestDispatcher("/manager/billStatisticView.jsp").forward(req, resp);
     }

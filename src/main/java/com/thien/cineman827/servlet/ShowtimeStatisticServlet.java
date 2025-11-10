@@ -62,8 +62,6 @@ public class ShowtimeStatisticServlet extends HttpServlet {
             revenueMovie += sts.getTotalRevenue();
             totalTickets += sts.getSoldTickets();
 
-            System.out.println(sts.getId());
-
         }
         req.setAttribute("revenueMovie", revenueMovie);
         req.setAttribute("totalTickets", totalTickets);
