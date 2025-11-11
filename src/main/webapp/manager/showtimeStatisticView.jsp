@@ -287,6 +287,9 @@
             <div class="welcome-text">
                 Welcome <span class="username">${sessionScope.user.fullName}</span>
             </div>
+            <a href="${pageContext.request.contextPath}/logout" class="btn-auth btn-logout">
+                <i class="fas fa-sign-out-alt"></i>
+            </a>
         </div>
     </div>
 </header>

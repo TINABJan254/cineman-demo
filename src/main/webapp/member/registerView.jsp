@@ -16,7 +16,7 @@
         }
 
         body {
-            background: url('https://evgroup.vn/wp-content/uploads/2024/04/thiet_bi_rap_phim_06.jpg') center/cover;
+            background: #e8e8e8;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -190,10 +190,10 @@
 <body>
 <div class="container">
     <div class="left-section">
-        <div class="logo">CinePTTK</div>
-        <div class="tagline">Rạp chiếu phim toàn quốc</div>
+        <div class="logo">Cineman</div>
+        <div class="tagline">Rạp chiếu phim</div>
         <div class="description">
-            <p>Khám phá hàng ngàn bộ phim và chương trình truyền hình đặc sắc từ mọi thể loại. Từ những bộ phim bom tấn Hollywood mới nhất đến những tác phẩm điện ảnh độc lập đầy cảm xúc.</p>
+            <p>Khám phá hàng ngàn bộ phim và chương trình truyền hình đặc sắc từ mọi thể loại. </p>
         </div>
     </div>
 

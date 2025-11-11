@@ -147,7 +147,7 @@
         }
 
         .stats-button {
-            background: #ff6b6b;
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
             color: white;
             border: none;
             padding: 18px 40px;
@@ -258,6 +258,9 @@
             <div class="welcome-text">
                 Welcome <span class="username">${sessionScope.user.fullName}</span>
             </div>
+            <a href="${pageContext.request.contextPath}/logout" class="btn-auth btn-logout">
+                <i class="fas fa-sign-out-alt"></i>
+            </a>
         </div>
     </div>
 </header>
